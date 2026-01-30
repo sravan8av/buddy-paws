@@ -20,7 +20,10 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
 
-    - name: Build and Push Image
+    - name: Build and Push Image (ARM64)
       run: |
-        docker build -t buddypawsacr2026.azurecr.io/buddy-paws:v4 .
-        docker push buddypawsacr2026.azurecr.io/buddy-paws:v4
+        docker buildx create --use
+        docker buildx build \
+          --platform linux/arm64 \
+          -t buddypawsacr2026.azurecr.io/buddy-paws:v6 \
+          --push .
