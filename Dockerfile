@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM --platform=linux/amd64 nginx:stable
 
 COPY . /usr/share/nginx/html
 
