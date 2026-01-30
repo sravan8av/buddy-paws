@@ -1,0 +1,26 @@
+name: Build and Push Buddy-Paws Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Login to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: buddypawsacr2026.azurecr.io
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and Push Image
+      run: |
+        docker build -t buddypawsacr2026.azurecr.io/buddy-paws:v4 .
+        docker push buddypawsacr2026.azurecr.io/buddy-paws:v4
