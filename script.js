@@ -1,81 +1,56 @@
-const API_URL = "http://4.188.113.222/dogs"; 
-// Change this to your backend ingress URL
-
 function showPage(pageId) {
+
+  // Hide all pages
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
+  // Show selected page
   document.getElementById(pageId).classList.add("active");
 
-  if (pageId === "matches") {
-    loadDogs();
+  // Navbar hide only on Home
+  const navbar = document.querySelector(".navbar");
+
+  if (pageId === "home") {
+    navbar.style.display = "none";
+  } else {
+    navbar.style.display = "flex";
   }
 }
 
-// Default homepage
-window.onload = () => {
+// Default: Hide navbar on first load
+window.onload = function () {
   showPage("home");
 };
 
-
-// ✅ Load Dogs from Backend
-async function loadDogs() {
-  try {
-    const response = await fetch(API_URL);
-    const dogs = await response.json();
-
-    const container = document.getElementById("dogCards");
-    container.innerHTML = "";
-
-    dogs.forEach(dog => {
-      container.innerHTML += `
-        <div class="card">
-          <img src="${dog.photo}" />
-          <h3>${dog.name}</h3>
-          <p>${dog.breed}</p>
-
-          <button onclick="sendWoof('${dog.name}')">
-            Send Woof 🐶
-          </button>
-
-          <button class="delete-btn"
-            onclick="deleteDog('${dog._id}')">
-            ❌ Unregister
-          </button>
-        </div>
-      `;
-    });
-
-  } catch (err) {
-    alert("❌ Failed to load dogs from backend.");
-    console.error(err);
-  }
+// ✅ SEND WOOF BUTTON WORKING
+function sendWoof(dogName) {
+  alert("🐾 Woof sent successfully to " + dogName + "! ❤️");
 }
 
-
-// ✅ Register Dog into MongoDB
-async function addDog(event) {
+// ✅ Register dog and add to matches
+function addDog(event) {
   event.preventDefault();
 
   let name = document.getElementById("dogName").value;
   let breed = document.getElementById("dogBreed").value;
-  let file = document.getElementById("dogPhoto").files[0];
+  let photoInput = document.getElementById("dogPhoto");
 
+  let file = photoInput.files[0];
   let reader = new FileReader();
 
-  reader.onload = async function () {
-    const newDog = {
-      name,
-      breed,
-      photo: reader.result
-    };
+  reader.onload = function () {
 
-    await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newDog)
-    });
+    let newCard = `
+      <div class="card">
+        <img src="${reader.result}">
+        <h3>${name}</h3>
+        <p>${breed} • Newly Registered 💕</p>
+        <button onclick="sendWoof('${name}')">Send a Woof 🐶</button>
+      </div>
+    `;
+
+    document.getElementById("dogCards").innerHTML += newCard;
 
     alert("✅ Dog Registered Successfully!");
 
@@ -83,23 +58,4 @@ async function addDog(event) {
   };
 
   reader.readAsDataURL(file);
-}
-
-
-// ✅ Delete Dog
-async function deleteDog(id) {
-  if (!confirm("Unregister this dog?")) return;
-
-  await fetch(`${API_URL}/${id}`, {
-    method: "DELETE"
-  });
-
-  alert("✅ Dog Unregistered!");
-  loadDogs();
-}
-
-
-// ✅ Woof
-function sendWoof(name) {
-  alert("🐾 Woof sent to " + name + " ❤️");
 }
