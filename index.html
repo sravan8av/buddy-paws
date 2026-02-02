@@ -2,65 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Buddy Paws 🐾</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
   <!-- NAVBAR -->
   <div class="navbar">
-    <h2>🐾 Buddy Paws</h2>
-    <div>
+    <h1 class="logo">🐾 Buddy Paws</h1>
+    <div class="nav-buttons">
       <button onclick="showPage('matches')">Matches</button>
       <button onclick="showPage('register')">Register</button>
     </div>
   </div>
 
-
   <!-- HOME PAGE -->
-  <div id="home" class="page active home">
-    <h1>Welcome to Buddy Paws 🐶</h1>
-    <p>The best dating app for dogs ❤️</p>
-
-    <button class="main-btn" onclick="showPage('matches')">
-      Start Matching
-    </button>
-  </div>
-
+  <section id="home" class="page active">
+    <div class="hero">
+      <h1>🐶 Welcome to Buddy Paws</h1>
+      <p>Find your dog’s best buddy today!</p>
+      <button onclick="showPage('matches')">Start Matching ❤️</button>
+    </div>
+  </section>
 
   <!-- MATCHES PAGE -->
-  <div id="matches" class="page">
-    <h2>🐕 Dog Matches</h2>
-    <p>Find your dog’s best buddy!</p>
+  <section id="matches" class="page">
+    <h2 class="page-title">🐕 Dog Matches</h2>
+    <p class="subtitle">Find your dog’s best buddy!</p>
 
-    <div id="dogCards" class="cards-container">
-      <!-- Cards will load dynamically from backend -->
+    <div id="dogCards" class="card-container">
+      <!-- Dogs will load here dynamically -->
     </div>
-  </div>
-
+  </section>
 
   <!-- REGISTER PAGE -->
-  <div id="register" class="page">
-    <h2>Register Your Dog 🐾</h2>
+  <section id="register" class="page">
+    <h2 class="page-title">Register Your Dog 🐾</h2>
 
     <form class="register-form" onsubmit="addDog(event)">
-
       <input type="text" id="dogName" placeholder="Dog Name" required>
-
       <input type="text" id="dogBreed" placeholder="Breed" required>
-
       <input type="file" id="dogPhoto" accept="image/*" required>
 
-      <button type="submit" class="main-btn">
-        Register Dog
-      </button>
-
+      <button type="submit">Register Dog</button>
     </form>
-  </div>
-
+  </section>
 
   <script src="script.js"></script>
-
 </body>
 </html>
