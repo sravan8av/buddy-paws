@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Buddy-Paws 🐾</title>
+  <title>Buddy Paws 🐾</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,105 +10,57 @@
 
   <!-- NAVBAR -->
   <div class="navbar">
-    <div class="logo">🐶 Buddy-Paws</div>
-
-    <div class="nav-links">
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('matches')">Find Matches</a>
-      <a href="#" onclick="showPage('register')">Register</a>
+    <h2>🐾 Buddy Paws</h2>
+    <div>
+      <button onclick="showPage('matches')">Matches</button>
+      <button onclick="showPage('register')">Register</button>
     </div>
   </div>
 
+
   <!-- HOME PAGE -->
-  <section id="home" class="page active home-page">
-    <div class="hero">
+  <div id="home" class="page active home">
+    <h1>Welcome to Buddy Paws 🐶</h1>
+    <p>The best dating app for dogs ❤️</p>
 
-      <div class="hero-img">
-        <img src="images/home.png" alt="Golden Love">
-      </div>
+    <button class="main-btn" onclick="showPage('matches')">
+      Start Matching
+    </button>
+  </div>
 
-      <div class="hero-text">
-        <h1>Make a Love Connection ❤️</h1>
-        <p>Create a profile and find the pawfect match for your furry friend today!</p>
 
-        <div class="hero-buttons">
-          <button onclick="showPage('matches')">Find Matches</button>
-          <button onclick="showPage('register')">Register My Pet</button>
-        </div>
-      </div>
+  <!-- MATCHES PAGE -->
+  <div id="matches" class="page">
+    <h2>🐕 Dog Matches</h2>
+    <p>Find your dog’s best buddy!</p>
 
+    <div id="dogCards" class="cards-container">
+      <!-- Cards will load dynamically from backend -->
     </div>
-  </section>
+  </div>
 
-  <!-- FIND MATCHES PAGE -->
-  <section id="matches" class="page">
-    <h2 class="title">Meet Dogs Looking for Love 🐾</h2>
-
-    <div class="cards" id="dogCards">
-
-      <!-- Default Dogs -->
-      <div class="card">
-        <img src="images/bella.jpg">
-        <h3>Rocky</h3>
-        <p>Husky • Loves adventures ❄️</p>
-        <button onclick="sendWoof('Rocky')">Send a Woof 🐶</button>
-      </div>
-
-      <div class="card">
-        <img src="images/charlie.jpg">
-        <h3>Charlie</h3>
-        <p>Labrador • Friendly & playful 🦴</p>
-        <button onclick="sendWoof('Charlie')">Send a Woof 🐶</button>
-      </div>
-
-      <div class="card">
-        <img src="images/max.jpg">
-        <h3>Bella</h3>
-        <p>Golden Retriever • Sweet & calm 🌼</p>
-        <button onclick="sendWoof('Bella')">Send a Woof 🐶</button>
-      </div>
-
-      <div class="card">
-        <img src="images/rocky.jpg">
-        <h3>Max</h3>
-        <p>German Shepherd • Loyal protector 🐕</p>
-        <button onclick="sendWoof('Max')">Send a Woof 🐶</button>
-      </div>
-
-    </div>
-  </section>
 
   <!-- REGISTER PAGE -->
-  <section id="register" class="page">
-    <h2 class="title">Register Your Dog 🐾</h2>
+  <div id="register" class="page">
+    <h2>Register Your Dog 🐾</h2>
 
     <form class="register-form" onsubmit="addDog(event)">
 
-      <label>Dog Name</label>
-      <input type="text" id="dogName" required>
+      <input type="text" id="dogName" placeholder="Dog Name" required>
 
-      <label>Breed</label>
-      <input type="text" id="dogBreed" required>
+      <input type="text" id="dogBreed" placeholder="Breed" required>
 
-      <label>Upload Pet Photo</label>
       <input type="file" id="dogPhoto" accept="image/*" required>
 
-      <label>Parent Name</label>
-      <input type="text" id="parentName" required>
-
-      <label>Mobile Number</label>
-      <input type="text" id="mobile" required>
-
-      <label>Address</label>
-      <textarea id="address" required></textarea>
-
-      <button type="submit">Register My Pet ✅</button>
+      <button type="submit" class="main-btn">
+        Register Dog
+      </button>
 
     </form>
-  </section>
+  </div>
+
 
   <script src="script.js"></script>
+
 </body>
 </html>
-
-
