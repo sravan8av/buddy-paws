@@ -1,54 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buddy Paws 🐾</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <h1 class="logo">🐾 Buddy Paws</h1>
-    <div class="nav-buttons">
-      <button onclick="showPage('matches')">Matches</button>
-      <button onclick="showPage('register')">Register</button>
-    </div>
-  </div>
+<!-- Default Dogs -->
+<div class="card">
+        <img src="images/rocky.jpg">
+        <img src="images/bella.jpg">
+<h3>Rocky</h3>
+<p>Husky • Loves adventures ❄️</p>
+<button onclick="sendWoof('Rocky')">Send a Woof 🐶</button>
+@@ -62,14 +62,14 @@ <h3>Charlie</h3>
+</div>
 
-  <!-- HOME PAGE -->
-  <section id="home" class="page active">
-    <div class="hero">
-      <h1>🐶 Welcome to Buddy Paws</h1>
-      <p>Find your dog’s best buddy today!</p>
-      <button onclick="showPage('matches')">Start Matching ❤️</button>
-    </div>
-  </section>
+<div class="card">
+        <img src="images/bella.jpg">
+        <img src="images/max.jpg">
+<h3>Bella</h3>
+<p>Golden Retriever • Sweet & calm 🌼</p>
+<button onclick="sendWoof('Bella')">Send a Woof 🐶</button>
+</div>
 
-  <!-- MATCHES PAGE -->
-  <section id="matches" class="page">
-    <h2 class="page-title">🐕 Dog Matches</h2>
-    <p class="subtitle">Find your dog’s best buddy!</p>
-
-    <div id="dogCards" class="card-container">
-      <!-- Dogs will load here dynamically -->
-    </div>
-  </section>
-
-  <!-- REGISTER PAGE -->
-  <section id="register" class="page">
-    <h2 class="page-title">Register Your Dog 🐾</h2>
-
-    <form class="register-form" onsubmit="addDog(event)">
-      <input type="text" id="dogName" placeholder="Dog Name" required>
-      <input type="text" id="dogBreed" placeholder="Breed" required>
-      <input type="file" id="dogPhoto" accept="image/*" required>
-
-      <button type="submit">Register Dog</button>
-    </form>
-  </section>
-
-  <script src="script.js"></script>
+<div class="card">
+        <img src="images/max.jpg">
+        <img src="images/rocky.jpg">
+<h3>Max</h3>
+<p>German Shepherd • Loyal protector 🐕</p>
+<button onclick="sendWoof('Max')">Send a Woof 🐶</button>
+@@ -111,3 +111,4 @@ <h2 class="title">Register Your Dog 🐾</h2>
 </body>
 </html>
+
